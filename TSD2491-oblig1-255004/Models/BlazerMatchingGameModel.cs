@@ -26,6 +26,30 @@ namespace TSD2491_oblig1_255004.Models
         "🐔","🐔",
         };
 
+        static List<string> faceEmoji = new List<string>
+        {
+        "😁","😁",
+        "😂","😂",
+        "😒","😒",
+        "😍","😍",
+        "😎","😎",
+        "😑","😑",
+        "🤔","🤔",
+        "😜","😜",
+        };
+
+        static List<string> sportEmoji = new List<string>
+        {
+        "🏋️‍","🏋️‍",
+        "🤺","🤺",
+        "🤼","🤼",
+        "🏊","🏊",
+        "🏃","🏃",
+        "🏀","🏀",
+        "🏈","🏈",
+        "🤸","🤸",
+        };
+
         static Random random = new Random();
         public List<string> shuffledEmoji = pickRandomEmoji();
 
