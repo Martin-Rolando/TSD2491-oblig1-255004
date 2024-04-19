@@ -28,17 +28,30 @@
 </div>
     <div class="container">
         <div class="row">
-            @for (var animalNumber = 0; animalNumber < Model.shuffledEmoji.Count; animalNumber++)
+            @for (var emojiNumber = 0; emojiNumber < Model.shuffledEmoji.Count; emojiNumber++)
             {
-                var animal = Model.shuffledEmoji[animalNumber];
-                var uniqueDescription = $"Button #{animalNumber}";
+                var emoji = Model.shuffledEmoji[emojiNumber];
+                var uniqueDescription = $"Button #{emojiNumber}";
                 <div class="col-3">
                     @using (Html.BeginForm("ButtonClick", "Home", FormMethod.Post))
                     {
-                        <input type="hidden" name="animal" value="@animal" />
+                        <input type="hidden" name="emoji" value="@emoji" />
                         <input type="hidden" name="description" value="@uniqueDescription" />
-                        <input type="submit" value="@animal" class="button" />
+                        <input type="submit" value="@emoji" class="button" />
                     }
                 </div>
             }
         </div>
+        <div class="row">
+            <h2>Match found: @Model.MatchesFound</h2>
+            @if (Model.GameStatus == "Game Running")
+            {
+                <h3>Game Status: @Model.GameStatus</h3>
+            }
+            else if (Model.GameStatus == "Game Complete")
+            {
+                <h3>Game Status: @Model.GameStatus</h3>
+            }
+        </div>
+
+    </div>

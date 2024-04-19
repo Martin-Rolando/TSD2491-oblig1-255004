@@ -53,31 +53,46 @@ namespace TSD2491_oblig1_255004.Models
         static Random random = new Random();
         public List<string> shuffledEmoji = pickRandomEmoji();
 
+        static List<string> pickRandomEmoji()
+        {
+            int randomIndex = random.Next(0, 3);
+            switch (randomIndex)
+            {
+                case 0:
+                    return animalEmoji = animalEmoji.OrderBy(items => random.Next()).ToList();
+                case 1:
+                    return faceEmoji = faceEmoji.OrderBy(items => random.Next()).ToList();
+                case 2:
+                    return sportEmoji = sportEmoji.OrderBy(items => random.Next()).ToList();
+                default:
+                    throw new Exception("Invalid random index");
+            }
+        }
         private void SetUpGame()
         {
             shuffledEmoji = pickRandomEmoji();
             MatchesFound = 0;
         }
 
-        string lastAnimalFound = string.Empty;
+        string lastEmojiFound = string.Empty;
         string lastDescription = string.Empty;
 
-        public void ButtonClick(string animal, string animalDescription)
+        public void ButtonClick(string emoji, string emojiDescription)
         {
             if (MatchesFound == 0)
             {
                 GameStatus = "Game Running";
             }
-            if (lastAnimalFound == string.Empty)
+            if (lastEmojiFound == string.Empty)
             {
-                lastAnimalFound = animal;
-                lastDescription = animalDescription;
+                lastEmojiFound = emoji;
+                lastDescription = emojiDescription;
             }
-            else if ((lastAnimalFound == animal) && (animalDescription != lastDescription))
+            else if ((lastEmojiFound == emoji) && (emojiDescription != lastDescription))
             {
-                lastAnimalFound = string.Empty;
+                lastEmojiFound = string.Empty;
                 shuffledEmoji = shuffledEmoji
-                    .Select(a => a.Replace(animal, string.Empty))
+                    .Select(a => a.Replace(emoji, string.Empty))
                     .ToList();
                 MatchesFound++;
                 if (MatchesFound == 8)
@@ -89,7 +104,7 @@ namespace TSD2491_oblig1_255004.Models
             }
             else
             {
-                lastAnimalFound = string.Empty;
+                lastEmojiFound = string.Empty;
             }
         }
     }

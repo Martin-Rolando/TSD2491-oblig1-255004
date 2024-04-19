@@ -20,9 +20,9 @@ namespace TSD2491_oblig1_255004.Controllers
 		}
 
         [HttpPost]
-        public IActionResult ButtonClick(string animal, string description)
+        public IActionResult ButtonClick(string emoji, string description)
         {
-            _blazerMatchingGameModel.ButtonClick(animal, description);
+            _blazerMatchingGameModel.ButtonClick(emoji, description);
             return RedirectToAction("Index");
         }
 
